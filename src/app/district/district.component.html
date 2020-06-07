@@ -10,10 +10,10 @@
     <p>
       <mat-list fxFlex>
         <mat-list-item *ngFor="let dist of state.districtData">
-          <h4 matLine> {{dist.name}} </h4>
-          <p matLine> {{dist.confirmed}} </p>
-          <p matLine> {{dist.zone}}</p>
-          <p matLine> {{dist.oldConfirmed}}</p>
+          <h4 matLine> District = {{dist.name}} </h4>
+          <p matLine> Confirmed = {{dist.confirmed}} </p>
+          <p matLine> Today = {{dist.oldConfirmed}}</p>
+          <p matLine> Zone = {{dist.zone}}</p>
           <!-- <table mat-table class="mat-elevation-z8">
             <th mat-header-cell *matHeaderCellDef> City/District </th>
             <td mat-cell *matCellDef="let element"> {{dist.name}} </td>
