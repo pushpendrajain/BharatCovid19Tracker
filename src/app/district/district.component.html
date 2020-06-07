@@ -1,0 +1,46 @@
+<div class="container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+
+  <div fxFlex="40" *ngIf="state.id" [@visibility]="visibility" [@expand]>
+    <p>
+      <mat-list fxFlex>
+        <mat-list-item *ngFor="let dist of state.districtData">
+          <h4 matLine> {{dist.name}} </h4>
+          <p matLine> {{dist.confirmed}} </p>
+          <p matLine> {{dist.zone}}</p>
+          <p matLine> {{dist.oldConfirmed}}</p>
+          <!-- <table mat-table class="mat-elevation-z8">
+            <th mat-header-cell *matHeaderCellDef> City/District </th>
+            <td mat-cell *matCellDef="let element"> {{dist.name}} </td>
+            <th mat-header-cell *matHeaderCellDef> Confirmed </th>
+            <td mat-cell *matCellDef="let element"> {{dist.confirmed}} </td>
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Today </th>
+            <td mat-cell *matCellDef="let element"> {{dist.oldConfirmed}} </td>
+          </ng-container>
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Zone </th>
+            <td mat-cell *matCellDef="let element"> {{dist.zone}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table> -->
+        </mat-list-item>
+      </mat-list>
+    </p>
+  </div>
+  <div fxFlex [hidden]="state || distErrMsg">
+    <mat-spinner></mat-spinner>
+    <h4>Loding . . . Please Wait!</h4>
+  </div>
+  <div fxFlex *ngIf="distErrMsg">
+    <h2>Error</h2>
+    <h4>{{ distErrMsg }}</h4>
+  </div>
+
+</div>

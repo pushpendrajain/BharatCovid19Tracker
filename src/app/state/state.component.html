@@ -1,0 +1,48 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>
+        States
+      </h3>
+      <hr>
+
+    </div>
+  </div>
+
+  <div fxFlex *ngIf="states" [@expand]>
+    <mat-grid-list cols="1" rowHeight="200px">
+      <mat-grid-tile *ngFor="let state of states" [routerLink]="['/state',state.id]" appHighlight>
+        <!-- <img height="200px" src="{{BaseURL + dish.image}}" alt={{dish.name}}> -->
+        <ul>
+          <li>
+            Confirmed = {{state.confirmed}}(<i class="fa fa-arrow-up" aria-hidden="true"></i>{{state.cchanges}})
+          </li>
+          <li>
+            Active = {{state.active}}(<i class="fa fa-arrow-up" aria-hidden="true"></i>{{state.aChanges}})
+          </li>
+          <li>
+            Recovered = {{state.recovered}}(<i class="fa fa-arrow-up" aria-hidden="true"></i>{{state.rchanges}})
+          </li>
+          <li>
+            Deaths = {{state.deaths}}(<i class="fa fa-arrow-up" aria-hidden="true"></i>{{state.dchanges}})
+          </li>
+        </ul>
+        <mat-grid-tile-footer>
+          <h1 matLine> {{state.state | uppercase}} </h1>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div fxFlex [hidden]="states || stateErrMsg">
+    <mat-spinner></mat-spinner>
+    <h4>Loding . . . Please Wait!</h4>
+  </div>
+  <div fxFlex *ngIf="stateErrMsg">
+    <h2>Error</h2>
+    <h4>{{ stateErrMsg }}</h4>
+  </div>
+</div>
